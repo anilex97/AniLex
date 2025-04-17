@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Портфолио | AniLex</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">👨‍💻 AniLex</div>
+  <div class="nav-links">
+    <a href="#about">Обо мне</a>
+    <a href="#projects">Проекты</a>
+    <a href="#contact">Контакты</a>
+    <button id="theme-toggle">🌓</button>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <h1 data-aos="fade-up">Привет, я AniLex</h1>
+  <p data-aos="fade-up" data-aos-delay="200">Fullstack разработчик, создающий мощные решения</p>
+</header>
+
+<section id="about" class="section" data-aos="fade-up">
+  <h2>Обо мне</h2>
+  <p>Я разработчик с опытом в Web, Backend и автоматизации. Работаю с Python, JavaScript, Django, Vue, Telegram API. Люблю делать интерфейсы с анимациями и умные боты.</p>
+</section>
+
+<section id="projects" class="section" data-aos="fade-up">
+  <h2>Проекты</h2>
+  <div class="projects">
+    <div class="project">
+      <h3>🤖 Telegram Бот с AI</h3>
+      <p>Бот с генерацией текста и изображений, магазин и оплата через крипту.</p>
+    </div>
+    <div class="project">
+      <h3>💸 Криптообменник</h3>
+      <p>Сайт обмена валют на Django+Vue с API CoinGecko и SimpleSwap.</p>
+    </div>
+    <div class="project">
+      <h3>📚 Обучающая платформа</h3>
+      <p>Курсы и тесты для сотрудников, права доступа, отчёты, Telegram-бот.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section" data-aos="fade-up">
+  <h2>Связаться</h2>
+  <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+    <button type="submit">Отправить</button>
+  </form>
+  <div class="socials">
+    <a href="https://t.me/UjinCode">Telegram</a>
+    <a href="mailto:anilex97@gmail.com">Email</a>
+    <a href="https://github.com/anilex97">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  &copy; AniLex
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  const toggle = document.getElementById('theme-toggle');
+  toggle.onclick = () => {
+    const root = document.documentElement;
+    const theme = root.getAttribute('data-theme');
+    root.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
+  };
+</script>
+</body>
+</html>
