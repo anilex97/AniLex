@@ -1,82 +1,218 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Портфолио | AniLex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UjinCode | Кодер нового поколения</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --text: #e0e0e0;
+      --accent: #00ffc3;
+      --card: #151820;
+      --radius: 18px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      animation: fadeIn 1.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.2);
+    }
+    .main-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90vw;
+      max-width: 1400px;
+      gap: 2rem;
+    }
+    .card-grid.left, .card-grid.right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 300px;
+    }
+    .center-info {
+      text-align: center;
+      max-width: 300px;
+    }
+    .hero-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 20px var(--accent);
+      margin: 0 auto 1rem;
+    }
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    .tagline {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+    .info-box {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: left;
+      line-height: 1.4;
+    }
+    .tech-icons {
+      margin: 1.5rem auto;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .tech-icons i {
+      margin: 0 10px;
+      color: var(--accent);
+      transition: transform 0.3s;
+    }
+    .tech-icons i:hover {
+      transform: scale(1.2);
+    }
+    .slider {
+      margin-top: 2rem;
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      animation: slide 8s infinite alternate ease-in-out;
+    }
+    @keyframes slide {
+      0% { opacity: 0; transform: translateY(10px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+    .link-card {
+      background: var(--card);
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px rgba(0,255,195,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,255,195,0.3);
+    }
+    .link-card i {
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+    .link-card span {
+      font-weight: 600;
+    }
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card-grid.left, .card-grid.right {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <video class="background-video" autoplay muted loop>
+    <source src="https://cdn.pixabay.com/vimeo/808242963/abstract-138541.mp4?width=1280&hash=45d83e1ad1ae6b83379bb0202e81b5a5d3f1ffb1" type="video/mp4">
+  </video>
 
-<nav class="nav">
-  <div class="logo">👨‍💻 AniLex</div>
-  <div class="nav-links">
-    <a href="#about">Обо мне</a>
-    <a href="#projects">Проекты</a>
-    <a href="#contact">Контакты</a>
-    <button id="theme-toggle">🌓</button>
-  </div>
-</nav>
-
-<header class="hero" id="home">
-  <h1 data-aos="fade-up">Привет, я AniLex</h1>
-  <p data-aos="fade-up" data-aos-delay="200">Fullstack разработчик, создающий мощные решения</p>
-</header>
-
-<section id="about" class="section" data-aos="fade-up">
-  <h2>Обо мне</h2>
-  <p>Я разработчик с опытом в Web, Backend и автоматизации. Работаю с Python, JavaScript, Django, Vue, Telegram API. Люблю делать интерфейсы с анимациями и умные боты.</p>
-</section>
-
-<section id="projects" class="section" data-aos="fade-up">
-  <h2>Проекты</h2>
-  <div class="projects">
-    <div class="project">
-      <h3>🤖 Telegram Бот с AI</h3>
-      <p>Бот с генерацией текста и изображений, магазин и оплата через крипту.</p>
+  <div class="main-content">
+    <div class="card-grid left">
+      <div class="link-card"><span>Разработка ботов и скриптов</span> <i class="fas fa-robot"></i></div>
+      <div class="link-card"><span>Веб-приложения и сайты</span> <i class="fas fa-globe"></i></div>
+      <div class="link-card"><span>Интеграция API и систем</span> <i class="fas fa-plug"></i></div>
     </div>
-    <div class="project">
-      <h3>💸 Криптообменник</h3>
-      <p>Сайт обмена валют на Django+Vue с API CoinGecko и SimpleSwap.</p>
+
+    <div class="center-info">
+      <div class="hero-avatar">
+        <img src="6duCFoxQLWI.jpg" alt="Avatar">
+      </div>
+      <h1>UjinCode</h1>
+      <p class="tagline">Создаю цифровые инструменты. Технологии, автоматизация, масштаб.</p>
+
+      <div class="tech-icons">
+        <i class="fab fa-java"></i>
+        <i class="fab fa-js"></i>
+        <i class="fab fa-python"></i>
+        <i class="fas fa-code"></i>
+      </div>
+
+      <div class="slider">Разработка сайтов и приложений — Быстро. Надежно. Профессионально.</div>
+
+      <div class="info-box">
+        <strong>🛠️ Что я делаю:</strong><br>
+        — Разработка веб-приложений, скриптов, ботов и API<br>
+        — Интеграция сторонних сервисов и оптимизация кода<br>
+        — Быстрая поддержка и устранение ошибок
+        <br><br>
+        <strong>📈 Почему я:</strong><br>
+        — Ответственность и соблюдение сроков<br>
+        — Понятная коммуникация и поддержка после сдачи проекта
+      </div>
     </div>
-    <div class="project">
-      <h3>📚 Обучающая платформа</h3>
-      <p>Курсы и тесты для сотрудников, права доступа, отчёты, Telegram-бот.</p>
+
+    <div class="card-grid right">
+      <a class="link-card" href="https://t.me/UjinCode"><span>Telegram</span> <i class="fab fa-telegram"></i></a>
+      <a class="link-card" href="https://discord.gg/yQt2XQw6wx"><span>Discord</span> <i class="fab fa-discord"></i></a>
+      <a class="link-card" href="https://steamcommunity.com/id/AniLexx/"><span>Steam</span> <i class="fab fa-steam"></i></a>
     </div>
   </div>
-</section>
 
-<section id="contact" class="section" data-aos="fade-up">
-  <h2>Связаться</h2>
-  <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Ваше имя" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="message" placeholder="Ваше сообщение" required></textarea>
-    <button type="submit">Отправить</button>
-  </form>
-  <div class="socials">
-    <a href="https://t.me/UjinCode">Telegram</a>
-    <a href="mailto:anilex97@gmail.com">Email</a>
-    <a href="https://github.com/anilex97">GitHub</a>
-  </div>
-</section>
-
-<footer>
-  &copy; AniLex
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-
-  const toggle = document.getElementById('theme-toggle');
-  toggle.onclick = () => {
-    const root = document.documentElement;
-    const theme = root.getAttribute('data-theme');
-    root.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
-  };
-</script>
+  <footer>
+    &copy; 2025 AniLex
+  </footer>
 </body>
 </html>
